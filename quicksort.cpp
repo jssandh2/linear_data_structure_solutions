@@ -1,3 +1,10 @@
+// This is the quicksort algorithm. It makes use of taking the first elmement as the pivot, and creating 2 new vectors
+// where each vector stores the elements smaller than the pivot and greater than the pivot respectively.
+// Append the pivot to the smaller vector, and recursively call quicksort on eah vector till the size is 1 or 2, in which 
+// case we print the sorted arrays. 
+// We can also concatenate the arrays into a sorted array, however, I chose not to do it. This builds upon the idea of my 
+// partition function.
+
 #include <map>
 #include <set>
 #include <list>
@@ -16,13 +23,24 @@
 #include <algorithm>
 using namespace std;
 void quickSort(vector <int>  ar, int ar_size) {
-    if (ar_size == 1)
+    if (ar_size == 0)
+        {
+            return;
+        }
+    else if (ar_size == 1)
         {
             cout << ar[0] << " ";
         }
     else if (ar_size == 2)
         {
-            cout << ar[0] << " " << ar[1] << " ";
+            if (ar[0] < ar[1])
+                {
+                    cout << ar[0] << " " << ar[1] << " ";
+                }
+            else
+                {
+                    cout << ar[1] << " " << ar[0] << " ";                      
+                }
         }
     else
         {
@@ -40,11 +58,16 @@ void quickSort(vector <int>  ar, int ar_size) {
                             larger.push_back(ar[i]);
                         }
                 }
-            // partition(smaller);
-            // partition(larger);
             smaller.push_back(partition);
-            quickSort(smaller, smaller.size());
-            quickSort(larger, larger.size());
+            if (larger.size() == 0)
+                {
+                     quickSort(smaller, smaller.size()); // partition(smaller);
+                }
+            else
+                {
+                     quickSort(smaller, smaller.size()); // partition(smaller);
+                     quickSort(larger, larger.size()); // partition(larger);                  
+                }
         }
 }
 
@@ -62,3 +85,4 @@ quickSort(_ar, _ar_size);
    
    return 0;
 }
+
