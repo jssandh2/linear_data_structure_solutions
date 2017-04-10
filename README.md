@@ -1,4 +1,6 @@
-linear_data_structure_solutions
+# Sorting Algorithms
 ===============================
 
-A directory containing C++ code solutions to various problems requiring the use of arrays, vectors, stacks and queues.
+* A directory containing C++ code for the following 2 sorting Algorithms :
+    * Insertion Sort
+    * Quicksort
